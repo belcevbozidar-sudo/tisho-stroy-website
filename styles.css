@@ -1645,18 +1645,6 @@ textarea.form-control {
     display: block;
 }
 
-/* Smartphone notch overlay */
-.video-frame-notch {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 16px;
-    background: #1c1f26;
-    border-radius: 0 0 10px 10px;
-    z-index: 10;
-}
 
 /* Responsive adjustment for video showcase */
 @media (max-width: 1024px) {
@@ -1695,12 +1683,6 @@ textarea.form-control {
         border-radius: 20px;
     }
 
-    .video-frame-notch {
-        top: 18px;
-        width: 80px;
-        height: 12px;
-        border-radius: 0 0 8px 8px;
-    }
 }
 
 /* ==========================================================================
