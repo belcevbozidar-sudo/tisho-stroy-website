@@ -141,6 +141,58 @@
         </div>
     </section>
 
+    <!-- VIDEO SHOWCASE SECTION -->
+    <section class="video-showcase-section">
+        <div class="container video-showcase-grid">
+            <div class="video-showcase-content">
+                <span class="sub-title">Нашият процес</span>
+                <h2>Вижте как работим в реално време</h2>
+                <p>Всеки ремонт на покрив се извършва по най-високи строителни стандарти. Заснехме част от работния ни процес директно от обекта, за да се уверите в прецизността, професионализма и вниманието към всеки детайл на нашия екип.</p>
+                
+                <div class="video-features-list">
+                    <div class="video-feature-item">
+                        <div class="video-feature-icon">1</div>
+                        <div class="video-feature-text">
+                            <h4>Здрава Дървена Конструкция</h4>
+                            <p>Използваме подбрани материали и ги сглобяваме с професионална точност.</p>
+                        </div>
+                    </div>
+                    <div class="video-feature-item">
+                        <div class="video-feature-icon">2</div>
+                        <div class="video-feature-text">
+                            <h4>Пълна Безопасност и Екипировка</h4>
+                            <p>Нашите майстори работят бързо, организирано и с пълно предпазно оборудване.</p>
+                        </div>
+                    </div>
+                    <div class="video-feature-item">
+                        <div class="video-feature-icon">3</div>
+                        <div class="video-feature-text">
+                            <h4>Перфектно Подравняване</h4>
+                            <p>Подготвяме повърхността за хидроизолация и керемиди, гарантирайки 100% защита от течове.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-actions" style="margin-top: 10px;">
+                    <a href="#contacts" class="btn btn-primary">
+                        <span>Заяви оглед</span>
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="video-frame-container">
+                <div class="video-frame-notch"></div>
+                <div class="video-wrapper">
+                    <video autoplay muted loop playsinline controls class="showcase-video">
+                        <source src="assets/roof_video.mp4" type="video/mp4">
+                        Вашият браузър не поддържа видео тагове.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SERVICES SECTION -->
     <section id="services" class="services-section">
         <div class="container">
@@ -346,21 +398,21 @@
                     <div class="form-group">
                         <label for="calc-service">Вид на услугата:</label>
                         <select id="calc-service" class="form-select">
-                            <option value="18" data-desc="Разкриване, почистване, полагане на мембрана, летви и пренареждане на керемиди.">Пренареждане на керемиди (с труд и материали)</option>
+                            <option value="120" data-desc="Цялостно събаряне на стар покрив и изграждане на изцяло нова дървена конструкция, ламперия, мембрана и керемиди." selected>Изграждане на нов покрив (труд + материали)</option>
+                            <option value="30" data-desc="Разкриване, почистване, полагане на мембрана, летви и пренареждане на керемиди.">Пренареждане на керемиди (с труд и материали)</option>
                             <option value="35" data-desc="Хидроизолация с висококачествени битумни мембрани с минерална посипка.">Полагане на Хидроизолация (труд + материали)</option>
-                            <option value="95" data-desc="Цялостно събаряне на стар покрив и изграждане на изцяло нова дървена конструкция, ламперия, мембрана и керемиди.">Изграждане на нов покрив (труд + материали)</option>
-                            <option value="25" data-desc="Монтаж на американски безшевни улуци, водосточни тръби и обшивки.">Монтаж на улуци и водостоци (за линеен метър)</option>
+                            <option value="25" data-desc="Монтаж на американски безшевни улуци, водосточни тръби и обшивки.">Монтаж на улуци и водостоци (за линеен метър / кв.м)</option>
                         </select>
-                        <p id="service-desc" class="service-desc">Разкриване, почистване, полагане на мембрана, летви и пренареждане на керемиди.</p>
+                        <p id="service-desc" class="service-desc">Цялостно събаряне на стар покрив и изграждане на изцяло нова дървена конструкция, ламперия, мембрана и керемиди.</p>
                     </div>
                     
                     <div class="form-group">
                         <label for="calc-area">Квадратура / Линейни метри (кв.м / л.м):</label>
                         <div class="range-slider-wrapper">
-                            <input type="range" id="calc-area-range" min="10" max="500" value="100" class="form-range">
+                            <input type="range" id="calc-area-range" min="10" max="500" value="50" class="form-range">
                             <div class="range-value-inputs">
-                                <input type="number" id="calc-area-number" min="10" max="500" value="100" class="form-input-number">
-                                <span class="unit">кв.м / л.м</span>
+                                <input type="number" id="calc-area-number" min="10" max="500" value="50" class="form-input-number">
+                                <span class="unit">кв.m / л.м</span>
                             </div>
                         </div>
                     </div>
@@ -368,13 +420,21 @@
                     <div class="form-group">
                         <label>Допълнителни опции:</label>
                         <div class="checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="calc-wood" value="15">
-                                <span>Подмяна на изгнила дървена ламперия (+15 лв/кв.м)</span>
+                            <label class="checkbox-label" id="calc-boards-wrapper" style="display: none;">
+                                <input type="checkbox" id="calc-boards" value="15">
+                                <span>Монтаж на нови челни дъски (+15 €/м)</span>
+                            </label>
+                            <label class="checkbox-label" id="calc-tiles-wrapper" style="display: none;">
+                                <input type="checkbox" id="calc-tiles" value="5">
+                                <span>Доставка на нови керемиди (+5 €/кв.м)</span>
+                            </label>
+                            <label class="checkbox-label" id="calc-lining-wrapper" style="display: none;">
+                                <input type="checkbox" id="calc-lining" value="15">
+                                <span>Монтаж на нова дървена ламперия (+15 €/кв.м)</span>
                             </label>
                             <label class="checkbox-label">
-                                <input type="checkbox" id="calc-chimney" value="150">
-                                <span>Обшиване на комини (броя) (+150 лв/бр)</span>
+                                <input type="checkbox" id="calc-chimney" value="100">
+                                <span>Обшиване на комини (броя) (+100 €/бр)</span>
                             </label>
                         </div>
                     </div>
@@ -382,7 +442,7 @@
                     <div class="calculator-result">
                         <span class="result-label">Ориентировъчна сума:</span>
                         <div class="result-price">
-                            <span id="calc-total">1800</span> <span class="currency">лв.</span>
+                            <span id="calc-total">6000</span> <span class="currency">€</span>
                         </div>
                         <p class="result-subtext">* Включва труд, доставка и първокачествени материали.</p>
                     </div>

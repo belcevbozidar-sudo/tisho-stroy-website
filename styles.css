@@ -1534,6 +1534,176 @@ textarea.form-control {
 }
 
 /* ==========================================================================
+   VIDEO SHOWCASE SECTION
+   ========================================================================== */
+.video-showcase-section {
+    padding: 100px 0;
+    background-color: var(--bg-darker);
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.video-showcase-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.video-showcase-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.video-showcase-content h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.video-showcase-content p {
+    font-size: 1.1rem;
+    color: var(--text-lead);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.video-features-list {
+    margin-bottom: 30px;
+}
+
+.video-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.video-feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    color: var(--primary);
+    flex-shrink: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    border: 1px solid var(--primary-glow);
+}
+
+.video-feature-text h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text-white);
+}
+
+.video-feature-text p {
+    font-size: 0.95rem;
+    color: var(--text-body);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Beautiful smartphone/modern portrait video frame */
+.video-frame-container {
+    position: relative;
+    max-width: 320px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 36px;
+    padding: 12px;
+    background: #1c1f26;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), var(--shadow-glow);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: var(--transition-smooth);
+}
+
+.video-frame-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.8), 0 0 30px hsla(20, 100%, 50%, 0.6);
+}
+
+.video-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 320 / 568;
+    background: #000;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Smartphone notch overlay */
+.video-frame-notch {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 16px;
+    background: #1c1f26;
+    border-radius: 0 0 10px 10px;
+    z-index: 10;
+}
+
+/* Responsive adjustment for video showcase */
+@media (max-width: 1024px) {
+    .video-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+    }
+    
+    .video-showcase-content {
+        align-items: center;
+    }
+    
+    .video-feature-item {
+        text-align: left;
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .video-showcase-section {
+        padding: 60px 0;
+    }
+    
+    .video-showcase-content h2 {
+        font-size: 2rem;
+    }
+    
+    .video-frame-container {
+        max-width: 280px;
+        padding: 10px;
+        border-radius: 30px;
+    }
+
+    .video-wrapper {
+        border-radius: 20px;
+    }
+
+    .video-frame-notch {
+        top: 18px;
+        width: 80px;
+        height: 12px;
+        border-radius: 0 0 8px 8px;
+    }
+}
+
+/* ==========================================================================
    SCROLL REVEAL ANIMATIONS
    ========================================================================== */
 .reveal {

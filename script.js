@@ -139,8 +139,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const calcService = document.getElementById('calc-service');
     const calcAreaRange = document.getElementById('calc-area-range');
     const calcAreaNumber = document.getElementById('calc-area-number');
-    const calcWood = document.getElementById('calc-wood');
     const calcChimney = document.getElementById('calc-chimney');
+    const calcBoardsWrapper = document.getElementById('calc-boards-wrapper');
+    const calcBoards = document.getElementById('calc-boards');
+    const calcTilesWrapper = document.getElementById('calc-tiles-wrapper');
+    const calcTiles = document.getElementById('calc-tiles');
+    const calcLiningWrapper = document.getElementById('calc-lining-wrapper');
+    const calcLining = document.getElementById('calc-lining');
     const calcTotal = document.getElementById('calc-total');
     const serviceDesc = document.getElementById('service-desc');
     
@@ -173,11 +178,48 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update service explanation description
             const selectedOption = calcService.options[calcService.selectedIndex];
             serviceDesc.textContent = selectedOption.getAttribute('data-desc');
+            
+            // Show/hide fascia boards option dynamically based on selected service
+            if (calcBoardsWrapper && calcBoards) {
+                if (calcService.value === '25') {
+                    calcBoardsWrapper.style.display = 'flex';
+                } else {
+                    calcBoardsWrapper.style.display = 'none';
+                    calcBoards.checked = false; // uncheck if hidden
+                }
+            }
+
+            // Show/hide new tiles and wood lining options dynamically for tile rearranging service
+            if (calcTilesWrapper && calcTiles && calcLiningWrapper && calcLining) {
+                if (calcService.value === '30') {
+                    calcTilesWrapper.style.display = 'flex';
+                    calcLiningWrapper.style.display = 'flex';
+                } else {
+                    calcTilesWrapper.style.display = 'none';
+                    calcLiningWrapper.style.display = 'none';
+                    calcTiles.checked = false;
+                    calcLining.checked = false;
+                }
+            }
+            
             calculatePrice();
         });
 
-        calcWood.addEventListener('change', calculatePrice);
-        calcChimney.addEventListener('change', calculatePrice);
+        if (calcChimney) {
+            calcChimney.addEventListener('change', calculatePrice);
+        }
+
+        if (calcBoards) {
+            calcBoards.addEventListener('change', calculatePrice);
+        }
+
+        if (calcTiles) {
+            calcTiles.addEventListener('change', calculatePrice);
+        }
+
+        if (calcLining) {
+            calcLining.addEventListener('change', calculatePrice);
+        }
 
         // Price calculation core logic
         function calculatePrice() {
@@ -187,14 +229,24 @@ document.addEventListener('DOMContentLoaded', () => {
             // Base service price
             let total = area * pricePerSqMeter;
             
-            // Option 1: Replace decaying wood structure (+15 lv per sq. meter)
-            if (calcWood.checked) {
-                total += area * parseFloat(calcWood.value);
-            }
-            
-            // Option 2: Flash chimneys (+150 lv flat)
-            if (calcChimney.checked) {
+            // Option 2: Flash chimneys (+80 € flat)
+            if (calcChimney && calcChimney.checked) {
                 total += parseFloat(calcChimney.value);
+            }
+
+            // Option 3: Fascia boards (+15 € per sq.m/meter) - only active for gutters service
+            if (calcBoards && calcBoards.checked && calcService.value === '25') {
+                total += area * parseFloat(calcBoards.value);
+            }
+
+            // Option 4: New tiles (+5 € per sq.m) - only active for tile rearranging
+            if (calcTiles && calcTiles.checked && calcService.value === '30') {
+                total += area * parseFloat(calcTiles.value);
+            }
+
+            // Option 5: Wood lining (+15 € per sq.m) - only active for tile rearranging
+            if (calcLining && calcLining.checked && calcService.value === '30') {
+                total += area * parseFloat(calcLining.value);
             }
             
             // Round to whole numbers and display
