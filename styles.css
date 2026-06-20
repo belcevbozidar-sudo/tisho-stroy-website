@@ -1788,6 +1788,92 @@ textarea.form-control {
 }
 
 /* ==========================================================================
+   TESTIMONIALS SECTION
+   ========================================================================== */
+.testimonials-section {
+    padding: 100px 0;
+    background-color: var(--bg-darker);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.testimonial-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    padding: 35px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-glow);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), var(--shadow-glow);
+}
+
+.testimonial-stars {
+    color: #ffb100;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.testimonial-text {
+    font-style: italic;
+    color: var(--text-lead);
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-size: 1.02rem;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 20px;
+}
+
+.author-info h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: 2px;
+}
+
+.author-info span {
+    font-size: 0.85rem;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+@media (max-width: 992px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .testimonial-card {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonials-section {
+        padding: 60px 0;
+    }
+}
+
+/* ==========================================================================
    SCROLL REVEAL ANIMATIONS
    ========================================================================== */
 .reveal {
