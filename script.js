@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const ntfyBody = `Име: ${name}\nТелефон: ${phone}\nГрад/Място: ${location}\nУслуга: ${serviceText}\nОписание: ${message || 'Няма допълнително описание'}`;
                 
                 // Send notification to ntfy
-                fetch('https://ntfy.sh/georgiev_stroy_leads_98246', {
+                fetch('https://ntfy.sh/georgiev_stroy_leads_a82b93cf1a80', {
                     method: 'POST',
                     body: ntfyBody,
                     headers: {
