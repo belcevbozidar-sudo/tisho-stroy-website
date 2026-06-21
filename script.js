@@ -309,8 +309,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 const originalText = btnText.textContent;
                 btnText.textContent = 'Изпраща се...';
                 
-                // Simulate server latency (1.5 seconds)
-                setTimeout(() => {
+                // Get form values
+                const name = nameInput.value.trim();
+                const phone = phoneInput.value.trim();
+                const location = locationInput.value.trim();
+                const serviceSelect = document.getElementById('form-service');
+                const serviceText = serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex].text : '';
+                const messageInput = document.getElementById('form-message');
+                const message = messageInput ? messageInput.value.trim() : '';
+                
+                // Format message for ntfy (Cyrillic-friendly)
+                const ntfyBody = `Име: ${name}\nТелефон: ${phone}\nГрад/Място: ${location}\nУслуга: ${serviceText}\nОписание: ${message || 'Няма допълнително описание'}`;
+                
+                // Send notification to ntfy
+                fetch('https://ntfy.sh/georgiev_stroy_leads_98246', {
+                    method: 'POST',
+                    body: ntfyBody,
+                    headers: {
+                        'Title': 'Ново запитване от сайта!',
+                        'Tags': 'house,hammer,incoming_envelope',
+                        'Priority': 'high'
+                    }
+                })
+                .then(() => {
+                    console.log('Notification sent successfully to ntfy');
+                })
+                .catch(err => {
+                    console.error('Error sending notification to ntfy:', err);
+                })
+                .finally(() => {
                     // Reset button states
                     formSubmitBtn.disabled = false;
                     btnSpinner.classList.add('hide');
@@ -322,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     // Reset form fields
                     contactForm.reset();
-                }, 1500);
+                });
             }
         });
         
