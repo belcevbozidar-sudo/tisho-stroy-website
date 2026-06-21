@@ -322,11 +322,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const ntfyBody = `Име: ${name}\nТелефон: ${phone}\nГрад/Място: ${location}\nУслуга: ${serviceText}\nОписание: ${message || 'Няма допълнително описание'}`;
                 
                 // Send notification to ntfy
+                const encodedTitle = '=?utf-8?B?' + btoa(unescape(encodeURIComponent('Ново запитване от сайта!'))) + '?=';
                 fetch('https://ntfy.sh/georgiev_stroy_leads_a82b93cf1a80', {
                     method: 'POST',
                     body: ntfyBody,
                     headers: {
-                        'Title': 'Ново запитване от сайта!',
+                        'Title': encodedTitle,
                         'Tags': 'house,hammer,incoming_envelope',
                         'Priority': 'high'
                     }
