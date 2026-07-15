@@ -439,4 +439,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     setTimeout(animateProcessLine, 100);
+
+    // Intersection Observer for mobile service cards border highlighting
+    const serviceCards = document.querySelectorAll('.service-card');
+    if (serviceCards.length > 0) {
+        const cardObserverOptions = {
+            root: null,
+            rootMargin: '-15% 0px -25% 0px',
+            threshold: 0.2
+        };
+
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (window.innerWidth <= 768) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active-card');
+                    } else {
+                        entry.target.classList.remove('active-card');
+                    }
+                } else {
+                    entry.target.classList.remove('active-card');
+                }
+            });
+        }, cardObserverOptions);
+
+        serviceCards.forEach(card => {
+            cardObserver.observe(card);
+        });
+    }
 });
