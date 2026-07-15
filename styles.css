@@ -3,7 +3,7 @@
    ========================================================================== */
 :root {
     /* Colors - Brand & Accents */
-    --primary: hsl(20, 100%, 50%);         /* Roof Orange/Tile Red */
+    --primary: hsl(20, 100%, 50%);         /* Hammer Orange/Construction Orange */
     --primary-hover: hsl(20, 100%, 43%);
     --primary-light: hsla(20, 100%, 50%, 0.1);
     --primary-glow: hsla(20, 100%, 50%, 0.4);
@@ -375,7 +375,7 @@ button {
     position: relative;
     min-height: 80vh;
     padding: 120px 0 100px;
-    background-image: url('assets/roof_hero.png');
+    background-image: url('assets/tisho_hero.jpg');
     background-size: cover;
     background-position: center;
     display: flex;

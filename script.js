@@ -179,9 +179,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const selectedOption = calcService.options[calcService.selectedIndex];
             serviceDesc.textContent = selectedOption.getAttribute('data-desc');
             
-            // Show/hide fascia boards option dynamically based on selected service
+            // Show/hide stairs carrying option dynamically based on selected service (demolition, cleaning, building)
             if (calcBoardsWrapper && calcBoards) {
-                if (calcService.value === '25') {
+                if (calcService.value === '15' || calcService.value === '8' || calcService.value === '40') {
                     calcBoardsWrapper.style.display = 'flex';
                 } else {
                     calcBoardsWrapper.style.display = 'none';
@@ -189,15 +189,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Show/hide new tiles and wood lining options dynamically for tile rearranging service
-            if (calcTilesWrapper && calcTiles && calcLiningWrapper && calcLining) {
-                if (calcService.value === '30') {
+            // Show/hide container rental option dynamically based on selected service (hauling, demolition, building)
+            if (calcTilesWrapper && calcTiles) {
+                if (calcService.value === '120' || calcService.value === '15' || calcService.value === '40') {
                     calcTilesWrapper.style.display = 'flex';
-                    calcLiningWrapper.style.display = 'flex';
                 } else {
                     calcTilesWrapper.style.display = 'none';
-                    calcLiningWrapper.style.display = 'none';
                     calcTiles.checked = false;
+                }
+            }
+
+            // Show/hide disinfection option dynamically based on selected service (cleaning)
+            if (calcLiningWrapper && calcLining) {
+                if (calcService.value === '8') {
+                    calcLiningWrapper.style.display = 'flex';
+                } else {
+                    calcLiningWrapper.style.display = 'none';
                     calcLining.checked = false;
                 }
             }
@@ -229,23 +236,23 @@ document.addEventListener('DOMContentLoaded', () => {
             // Base service price
             let total = area * pricePerSqMeter;
             
-            // Option 2: Flash chimneys (+80 € flat)
+            // Option 2: Heavy objects (+150 лв flat)
             if (calcChimney && calcChimney.checked) {
                 total += parseFloat(calcChimney.value);
             }
 
-            // Option 3: Fascia boards (+15 € per sq.m/meter) - only active for gutters service
-            if (calcBoards && calcBoards.checked && calcService.value === '25') {
+            // Option 3: Stairs carrying (+2 лв per sq.m) - active for services 15, 8, 40
+            if (calcBoards && calcBoards.checked && (calcService.value === '15' || calcService.value === '8' || calcService.value === '40')) {
                 total += area * parseFloat(calcBoards.value);
             }
 
-            // Option 4: New tiles (+5 € per sq.m) - only active for tile rearranging
-            if (calcTiles && calcTiles.checked && calcService.value === '30') {
-                total += area * parseFloat(calcTiles.value);
+            // Option 4: Container rental (+80 лв flat) - active for services 120, 15, 40
+            if (calcTiles && calcTiles.checked && (calcService.value === '120' || calcService.value === '15' || calcService.value === '40')) {
+                total += parseFloat(calcTiles.value);
             }
 
-            // Option 5: Wood lining (+15 € per sq.m) - only active for tile rearranging
-            if (calcLining && calcLining.checked && calcService.value === '30') {
+            // Option 5: Disinfection (+3 лв per sq.m) - active for cleaning (8)
+            if (calcLining && calcLining.checked && calcService.value === '8') {
                 total += area * parseFloat(calcLining.value);
             }
             
@@ -323,12 +330,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Send notification to ntfy
                 const encodedTitle = '=?utf-8?B?' + btoa(unescape(encodeURIComponent('Ново запитване от сайта!'))) + '?=';
-                fetch('https://ntfy.sh/georgiev_stroy_leads_a82b93cf1a80', {
+                fetch('https://ntfy.sh/tisho_stroy_leads_b81c73df2a90', {
                     method: 'POST',
                     body: ntfyBody,
                     headers: {
                         'Title': encodedTitle,
-                        'Tags': 'house,hammer,incoming_envelope',
+                        'Tags': 'truck,hammer,broom,incoming_envelope',
                         'Priority': 'high'
                     }
                 })
