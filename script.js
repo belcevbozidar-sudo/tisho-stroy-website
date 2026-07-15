@@ -428,9 +428,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         progressLine.style.height = `${percentage * 100}%`;
 
+        const triggerPoints = [0.0, 0.48, 0.95];
         icons.forEach((icon, idx) => {
-            const triggerPoint = idx * 0.4 + 0.1; // 0.1, 0.5, 0.9
-            if (percentage >= triggerPoint) {
+            if (percentage >= triggerPoints[idx]) {
                 icon.classList.add('active');
             } else {
                 icon.classList.remove('active');
