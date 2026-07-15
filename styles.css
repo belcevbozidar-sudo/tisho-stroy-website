@@ -730,8 +730,8 @@ button {
 }
 
 .feature-icon {
-    background-color: var(--primary-light);
-    color: var(--primary);
+    background-color: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
     font-weight: bold;
     width: 28px;
     height: 28px;
@@ -740,7 +740,7 @@ button {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    border: 1px solid rgba(255, 107, 0, 0.2);
+    border: 1px solid rgba(46, 204, 113, 0.3);
 }
 
 .feature-item h4 {
@@ -2063,8 +2063,29 @@ textarea.form-control {
     }
     
     .hero-stats {
-        flex-wrap: wrap;
-        gap: 24px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        gap: 12px;
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid var(--border-color);
+        padding-top: 20px;
+    }
+    
+    .hero-stats .stat-item {
+        flex: 1;
+        align-items: center;
+    }
+    
+    .hero-stats .stat-number {
+        font-size: 1.4rem;
+        margin-bottom: 4px;
+    }
+    
+    .hero-stats .stat-text {
+        font-size: 0.65rem;
+        letter-spacing: 0.2px;
     }
     
 
