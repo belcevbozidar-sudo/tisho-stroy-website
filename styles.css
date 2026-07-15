@@ -468,50 +468,79 @@ button {
 }
 
 /* ==========================================================================
-   TRUST STRIP
+   INFINITE MARQUEE TICKER
    ========================================================================== */
-.trust-strip {
+.marquee-section {
     background-color: var(--bg-darker);
-    border-bottom: 1px solid var(--border-color);
-    padding: 32px 0;
-    margin-top: -30px;
+    border-top: 1px solid var(--bg-input);
+    border-bottom: 1px solid var(--bg-input);
+    padding: 16px 0;
+    overflow: hidden;
     position: relative;
     z-index: 10;
 }
 
-.trust-strip-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+.marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Premium masking fade effect on left and right sides */
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
-.trust-item {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-}
-
-.trust-icon {
-    background-color: rgba(255, 107, 0, 0.08);
-    color: var(--primary);
-    padding: 12px;
-    border-radius: var(--border-radius-sm);
-    border: 1px solid rgba(255, 107, 0, 0.2);
+.marquee-track {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+    white-space: nowrap;
+    width: max-content;
+    animation: marquee-scroll 35s linear infinite;
 }
 
-.trust-item h3 {
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin-bottom: 4px;
+.marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 20px;
 }
 
-.trust-item p {
-    font-size: 0.9rem;
+.marquee-badge {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--primary-glow);
+    letter-spacing: 0.5px;
+}
+
+.marquee-text {
+    color: var(--text-white);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.marquee-item-separator {
     color: var(--text-muted);
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+@keyframes marquee-scroll {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+/* Pause animation on hover for interactive feel */
+.marquee:hover .marquee-track {
+    animation-play-state: paused;
 }
 
 /* ==========================================================================
@@ -2038,11 +2067,7 @@ textarea.form-control {
         gap: 24px;
     }
     
-    /* Trust Strip layout */
-    .trust-strip-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
+
     
     /* Slider & Cards resizing */
     .slider-container {
