@@ -398,4 +398,45 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    /* ==========================================================================
+       7. PROCESS LIST ANIMATION ON SCROLL
+       ========================================================================== */
+    window.addEventListener('scroll', animateProcessLine);
+    window.addEventListener('resize', animateProcessLine);
+    
+    function animateProcessLine() {
+        const list = document.querySelector('.video-features-list');
+        if (!list) return;
+
+        const progressLine = document.querySelector('.process-line-progress');
+        const icons = document.querySelectorAll('.video-feature-icon');
+        if (!progressLine) return;
+
+        const rect = list.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        const startOffset = windowHeight * 0.75;
+        const endOffset = windowHeight * 0.25;
+        const totalHeight = rect.height;
+
+        const entryPoint = startOffset - rect.top;
+        const totalDist = startOffset - endOffset + totalHeight;
+
+        let percentage = entryPoint / totalDist;
+        percentage = Math.max(0, Math.min(1, percentage));
+
+        progressLine.style.height = `${percentage * 100}%`;
+
+        icons.forEach((icon, idx) => {
+            const triggerPoint = idx * 0.4 + 0.1; // 0.1, 0.5, 0.9
+            if (percentage >= triggerPoint) {
+                icon.classList.add('active');
+            } else {
+                icon.classList.remove('active');
+            }
+        });
+    }
+    
+    setTimeout(animateProcessLine, 100);
 });
