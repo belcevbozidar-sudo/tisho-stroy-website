@@ -236,22 +236,22 @@ document.addEventListener('DOMContentLoaded', () => {
             // Base service price
             let total = area * pricePerSqMeter;
             
-            // Option 2: Heavy objects (+150 лв flat)
+            // Option 2: Heavy objects (+150 € flat)
             if (calcChimney && calcChimney.checked) {
                 total += parseFloat(calcChimney.value);
             }
 
-            // Option 3: Stairs carrying (+2 лв per sq.m) - active for services 15, 8, 40
+            // Option 3: Stairs carrying (+2 € per sq.m) - active for services 15, 8, 40
             if (calcBoards && calcBoards.checked && (calcService.value === '15' || calcService.value === '8' || calcService.value === '40')) {
                 total += area * parseFloat(calcBoards.value);
             }
 
-            // Option 4: Container rental (+80 лв flat) - active for services 120, 15, 40
+            // Option 4: Container rental (+80 € flat) - active for services 120, 15, 40
             if (calcTiles && calcTiles.checked && (calcService.value === '120' || calcService.value === '15' || calcService.value === '40')) {
                 total += parseFloat(calcTiles.value);
             }
 
-            // Option 5: Disinfection (+3 лв per sq.m) - active for cleaning (8)
+            // Option 5: Disinfection (+3 € per sq.m) - active for cleaning (8)
             if (calcLining && calcLining.checked && calcService.value === '8') {
                 total += area * parseFloat(calcLining.value);
             }
